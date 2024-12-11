@@ -9,3 +9,4 @@ TwillRoutes::module('posts');
 TwillRoutes::module('locations');
 TwillRoutes::module('properties');
 TwillRoutes::module('rooms');
+TwillRoutes::module('customPages');

@@ -26,5 +26,5 @@ class Post extends Model implements Sortable
     public $slugAttributes = [
         'title',
     ];
-    
+
 }
