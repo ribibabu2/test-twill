@@ -7,7 +7,9 @@ use A17\Twill\Services\Listings\Columns\Text;
 use A17\Twill\Services\Listings\TableColumns;
 use A17\Twill\Services\Forms\Fields\Input;
 use A17\Twill\Services\Forms\Form;
+use A17\Twill\Services\Forms\Fields\Select;
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
+use App\Models\Property;
 
 class RoomController extends BaseModuleController
 {
@@ -25,12 +27,29 @@ class RoomController extends BaseModuleController
      */
     public function getForm(TwillModelContract $model): Form
     {
+        
         $form = parent::getForm($model);
 
         $form->add(
-            Input::make()->name('description')->label('Description')->translatable()
-        );
+            Input::make()
+                ->name('name')
+                ->label(twillTrans('Room Name'))
+                ->maxLength(100)
+                ->required()
+                ->note(twillTrans('Field note'))
+                ->placeholder(twillTrans('Room Name'))
+        )->add(
 
+            Select::make()
+                ->name('property_id')
+                ->label(twillTrans('Property'))
+                ->note('Select Property')
+                ->required()
+                ->options(
+                    Property::get()->pluck('name', 'id')->all()
+                )
+        );
+        
         return $form;
     }
 

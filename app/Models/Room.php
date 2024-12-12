@@ -17,29 +17,22 @@ class Room extends Model implements Sortable
     use HasTranslation, HasSlug, HasMedias, HasFiles, HasRevisions, HasPosition, HasFactory;
 
     protected $fillable = [
-        'name',           // Name of the room
-        'property_id',    // Foreign key to the Property model (if a room belongs to a property)
-        'description',    // Room's description
-        'slug',           // If you're using slugs for the room's URL
-        'published',      // If room is published or not
-        'created_at',     // Timestamps (if needed)
-        'updated_at',     // Timestamps (if needed)
-        // Add any additional fields for the Room model
+        'name',          
+        'title', 
+        'property_id',    
+        'description',    
+        'published',      
     ];
     
-    public $translatedAttributes = [
-        'title',
-        'description',
-    ];
     
     public $slugAttributes = [
         'title',
     ];
 
     public function property()
-{
-    return $this->belongsTo(Property::class);
-}
+    {
+        return $this->belongsTo(Property::class);
+    }
 
     
 }
