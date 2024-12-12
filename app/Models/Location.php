@@ -25,6 +25,7 @@ class Location extends Model implements Sortable
         'description',
         'position',
         'name',
+        'cover'
     ];
 
     

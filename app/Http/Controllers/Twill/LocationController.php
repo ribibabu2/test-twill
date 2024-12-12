@@ -8,6 +8,7 @@ use A17\Twill\Services\Forms\Fields\Input;
 use A17\Twill\Services\Forms\Fields\Wysiwyg;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Services\Listings\Columns\Text;
+use A17\Twill\Services\Forms\Fields\Medias;
 use A17\Twill\Services\Listings\TableColumns;
 
 
@@ -40,6 +41,12 @@ class LocationController extends BaseModuleController
                 ->toolbarOptions([['header' => [1, 2, false]], 'ordered', 'bullet'])
                 ->note('Main description of the Page')
                 ->label('Description')
+        )->add(
+            Medias::make()
+                ->name('cover')
+                ->required()
+                ->label(twillTrans('Cover image'))
+                ->max(1)
         );
         
         return $form;
